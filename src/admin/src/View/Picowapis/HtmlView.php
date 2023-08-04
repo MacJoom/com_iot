@@ -218,7 +218,7 @@ class HtmlView extends BaseHtmlView
 		return array(
 			'a.ordering'     => Text::_('JGRID_HEADING_ORDERING'),
 			'a.published'    => Text::_('JSTATUS'),
-			'a.name'         => Text::_('JGLOBAL_TITLE'),
+			'a.deviceid'     => Text::_('JGLOBAL_TITLE'),
 			'category_title' => Text::_('JCATEGORY'),
 			'a.access'       => Text::_('JGRID_HEADING_ACCESS'),
 			'a.language'     => Text::_('JGRID_HEADING_LANGUAGE'),

@@ -16,6 +16,8 @@
 		<field
 			name="deviceid"
 			type="text"
+			validate="Letter"
+			class="validate-letter"
 			label="COM_PICOWAPIS_FIELD_DEVICEID_LABEL"
 			size="40"
 			required="true"

@@ -65,7 +65,7 @@ class PicowapiTable extends Table implements VersionableTableInterface, Taggable
 		$this->typeAlias = 'com_picowapis.picowapi';
 		
 		// Set the alias since the column is called title
-		$this->setColumnAlias('title', 'name');
+		$this->setColumnAlias('title', 'deviceid');
 		
 		// Set the alias since the column is called state
 		$this->setColumnAlias('published', 'state');

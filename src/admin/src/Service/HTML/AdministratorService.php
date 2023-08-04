@@ -53,7 +53,7 @@ class AdministratorService
 			// Get the associated picowapi items
 			$db = Factory::getDbo();
 			$query = $db->getQuery(true)
-				->select('c.id, c.name as title')
+				->select('c.id, c.deviceid as title')
 				->select('l.sef as lang_sef, lang_code')
 				->from('#__picowapis_details as c')
 				->select('cat.title as category_title')

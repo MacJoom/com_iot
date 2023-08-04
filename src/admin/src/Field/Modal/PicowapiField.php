@@ -98,7 +98,7 @@ class PicowapiField extends FormField
 		{
 			$db    = Factory::getDbo();
 			$query = $db->getQuery(true)
-				->select($db->quoteName('name'))
+				->select($db->quoteName('deviceid'))
 				->from($db->quoteName('#__picowapis_details'))
 				->where($db->quoteName('id') . ' = ' . (int) $value);
 			$db->setQuery($query);
@@ -123,7 +123,7 @@ class PicowapiField extends FormField
 			$html .= '<span class="input-group">';
 		}
 
-		$html .= '<input class="form-control" id="' . $this->id . '_name" type="text" value="' . $title . '" disabled="disabled" size="35">';
+		$html .= '<input class="form-control" id="' . $this->id . '_deviceid" type="text" value="' . $title . '" disabled="disabled" size="35">';
 
 		if ($allowSelect || $allowNew || $allowEdit || $allowClear)
 		{
@@ -183,7 +183,7 @@ class PicowapiField extends FormField
 		// Note: class='required' for client side validation.
 		$class = $this->required ? ' class="required modal-value"' : '';
 
-		$html .= '<input type="hidden" id="' . $this->id . '_id"' . $class . ' data-required="' . (int) $this->required . '" name="' . $this->name
+		$html .= '<input type="hidden" id="' . $this->id . '_id"' . $class . ' data-required="' . (int) $this->required . '" deviceid="' . $this->deviceid
 			. '" data-text="' . htmlspecialchars(Text::_('COM_PICOWAPIS_SELECT_A_PICOWAPI', true), ENT_COMPAT, 'UTF-8') . '" value="' . $value . '">';
 
 		return $html;

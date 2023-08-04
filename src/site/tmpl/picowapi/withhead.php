@@ -16,11 +16,11 @@ use Joomla\CMS\Language\Text;
 
 echo "<hr>Here you can show a headertext<hr>";
 
-if ($this->item->params->get('show_name')) {
+if ($this->item->params->get('show_deviceid')) {
 	if ($this->Params->get('show_picowapi_name_label')) {
-		echo Text::_('COM_PICOWAPIS_NAME') . $this->item->name;
+		echo Text::_('COM_PICOWAPIS_NAME') . $this->item->deviceid;
 	} else {
-		echo $this->item->name;
+		echo $this->item->deviceid;
 	}
 }
 

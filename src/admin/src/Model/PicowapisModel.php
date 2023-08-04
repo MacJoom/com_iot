@@ -41,7 +41,7 @@ class PicowapisModel extends ListModel
 		{
 			$config['filter_fields'] = array(
 				'id', 'a.id',
-				'name', 'a.name',
+				'deviceid', 'a.deviceid',
                 'ipaddress', 'a.ipaddress',
 				'alias', 'a.alias',
 				'catid', 'a.catid', 'category_id', 'category_title',
@@ -86,7 +86,7 @@ class PicowapisModel extends ListModel
 					', ',
 					$this->getState(
 						'list.select',
-						'a.id, a.name, a.ipaddress, a.catid' .
+						'a.id, a.deviceid, a.ipaddress, a.catid' .
 						', a.access' .
 						', a.checked_out' .
 						', a.checked_out_time' .
@@ -191,7 +191,7 @@ class PicowapisModel extends ListModel
 			{
 				$search = $db->quote('%' . str_replace(' ', '%', $db->escape(trim($search), true) . '%'));
 				$query->where(
-					'(' . $db->quoteName('a.name') . ' LIKE ' . $search . ')'
+					'(' . $db->quoteName('a.deviceid') . ' LIKE ' . $search . ')'
 				);
 			}
 		}
@@ -203,7 +203,7 @@ class PicowapisModel extends ListModel
 		}
 
 		// Add the list ordering clause.
-		$orderCol = $this->state->get('list.ordering', 'a.name');
+		$orderCol = $this->state->get('list.ordering', 'a.deviceid');
 		$orderDirn = $this->state->get('list.direction', 'asc');
 
 		if ($orderCol == 'a.ordering' || $orderCol == 'category_title')
@@ -228,7 +228,7 @@ class PicowapisModel extends ListModel
 	 *
 	 * @since  0.1.0
 	 */
-	protected function populateState($ordering = 'a.name', $direction = 'asc')
+	protected function populateState($ordering = 'a.deviceid', $direction = 'asc')
 	{
 		$app = Factory::getApplication();
 
