@@ -44,7 +44,7 @@ use function trim;
 class PicowapiTable extends Table implements VersionableTableInterface, TaggableTableInterface
 {
 	use TaggableTableTrait;
-	
+
 	/**
 	 * Indicates that columns fully support the NULL value in the database
 	 *
@@ -52,7 +52,7 @@ class PicowapiTable extends Table implements VersionableTableInterface, Taggable
 	 * @since  4.0.0
 	 */
 	protected $_supportNullValue = false;
-	
+
 	/**
 	 * Constructor
 	 *
@@ -63,16 +63,16 @@ class PicowapiTable extends Table implements VersionableTableInterface, Taggable
 	public function __construct(DatabaseDriver $db)
 	{
 		$this->typeAlias = 'com_picowapis.picowapi';
-		
+
 		// Set the alias since the column is called title
-		$this->setColumnAlias('title', 'deviceid');
-		
+		$this->setColumnAlias('title', 'name');
+
 		// Set the alias since the column is called state
 		$this->setColumnAlias('published', 'state');
-		
+
 		parent::__construct('#__picowapis_details', 'id', $db);
 	}
-	
+
 	/**
 	 * Method to compute the default name of the asset.
 	 * The default name is in the form table_name.id
@@ -85,10 +85,10 @@ class PicowapiTable extends Table implements VersionableTableInterface, Taggable
 	protected function _getAssetName()
 	{
 		$k = $this->_tbl_key;
-		
+
 		return 'com_picowapis.picowapi.' . (int) $this->$k;
 	}
-	
+
 	/**
 	 * Method to return the title to use for the asset table.
 	 *
@@ -100,7 +100,7 @@ class PicowapiTable extends Table implements VersionableTableInterface, Taggable
 	{
 		return $this->title;
 	}
-	
+
 	/**
 	 * Method to get the parent asset id for the record
 	 *
@@ -114,28 +114,28 @@ class PicowapiTable extends Table implements VersionableTableInterface, Taggable
 	protected function _getAssetParentId(Table $table = null, $id = null)
 	{
 		$assetId = null;
-		
+
 		// This is an article under a category.
 		if ($this->catid)
 		{
 			$catId = (int) $this->catid;
-			
+
 			// Build the query to get the asset id for the parent category.
 			$query = $this->_db->getQuery(true)
 				->select($this->_db->quoteName('asset_id'))
 				->from($this->_db->quoteName('#__categories'))
 				->where($this->_db->quoteName('id') . ' = :catid')
 				->bind(':catid', $catId, ParameterType::INTEGER);
-			
+
 			// Get the asset id from the database.
 			$this->_db->setQuery($query);
-			
+
 			if ($result = $this->_db->loadResult())
 			{
 				$assetId = (int) $result;
 			}
 		}
-		
+
 		// Return the asset id.
 		if ($assetId)
 		{
@@ -146,7 +146,7 @@ class PicowapiTable extends Table implements VersionableTableInterface, Taggable
 			return parent::_getAssetParentId($table, $id);
 		}
 	}
-	
+
 	/**
 	 * Overloaded bind function
 	 *
@@ -166,23 +166,23 @@ class PicowapiTable extends Table implements VersionableTableInterface, Taggable
 			$registry        = new Registry($array['params']);
 			$array['params'] = (string) $registry;
 		}
-		
+
 		if (isset($array['metadata']) && \is_array($array['metadata']))
 		{
 			$registry          = new Registry($array['metadata']);
 			$array['metadata'] = (string) $registry;
 		}
-		
+
 		// Bind the rules.
 		if (isset($array['rules']) && \is_array($array['rules']))
 		{
 			$rules = new Rules($array['rules']);
 			$this->setRules($rules);
 		}
-		
+
 		return parent::bind($array, $ignore);
 	}
-	
+
 	/**
 	 * Overloaded check function
 	 *
@@ -200,37 +200,37 @@ class PicowapiTable extends Table implements VersionableTableInterface, Taggable
 		catch (\Exception $e)
 		{
 			$this->setError($e->getMessage());
-			
+
 			return false;
 		}
-		
+
 		if (trim($this->getColumnAlias('title') ?? '') == '')
 		{
 			$this->setError(Text::_('COM_PICOWAPIS_WARNING_PROVIDE_VALID_NAME'));
-			
+
 			return false;
 		}
-		
+
 		if (trim($this->alias) == '')
 		{
 			$this->alias = $this->title;
 		}
-		
+
 		$this->alias = ApplicationHelper::stringURLSafe($this->alias, $this->language);
-		
+
 		if (trim(str_replace('-', '', $this->alias)) == '')
 		{
 			$this->alias = Factory::getDate()->format('Y-m-d-H-i-s');
 		}
-		
+
 		// Check for a valid category.
 		if (!$this->catid = (int) $this->catid)
 		{
 			$this->setError(Text::_('JLIB_DATABASE_ERROR_CATEGORY_REQUIRED'));
-			
+
 			return false;
 		}
-		
+
 		/**
 		 * Ensure any new items have compulsory fields set. This is needed for things like
 		 * frontend editing where we don't show all the fields or using some kind of API
@@ -242,47 +242,47 @@ class PicowapiTable extends Table implements VersionableTableInterface, Taggable
 			{
 				$this->images = '{}';
 			}
-			
+
 			// URLs can be an empty json string
 			if (!isset($this->urls))
 			{
 				$this->urls = '{}';
 			}
-			
+
 			// Attributes (article params) can be an empty json string
 			if (!isset($this->attribs))
 			{
 				$this->attribs = '{}';
 			}
-			
+
 			// Attributes (article params) can be an empty json string
 			if (!isset($this->params))
 			{
 				$this->params = '{}';
 			}
-			
+
 			// Metadata can be an empty json string
 			if (!isset($this->metadata))
 			{
 				$this->metadata = '{}';
 			}
-			
+
 			// Hits must be zero on a new item
 			$this->hits = 0;
 		}
-		
+
 		// Set publish_up to null if not set
 		if (!$this->publish_up)
 		{
 			$this->publish_up = null;
 		}
-		
+
 		// Set publish_down to null if not set
 		if (!$this->publish_down)
 		{
 			$this->publish_down = null;
 		}
-		
+
 		// Check the publish down date is not earlier than publish up.
 		if (!is_null($this->publish_up) && !is_null($this->publish_down) && $this->publish_down < $this->publish_up)
 		{
@@ -291,24 +291,24 @@ class PicowapiTable extends Table implements VersionableTableInterface, Taggable
 			$this->publish_up   = $this->publish_down;
 			$this->publish_down = $temp;
 		}
-		
+
 		// Clean up keywords -- eliminate extra spaces between phrases
 		// and cr (\r) and lf (\n) characters from string
 		if (!empty($this->metakey))
 		{
 			// Only process if not empty
-			
+
 			// Array of characters to remove
 			$badCharacters = ["\n", "\r", "\"", '<', '>'];
-			
+
 			// Remove bad characters
 			$afterClean = StringHelper::str_ireplace($badCharacters, '', $this->metakey);
-			
+
 			// Create array using commas as delimiter
 			$keys = explode(',', $afterClean);
-			
+
 			$cleanKeys = [];
-			
+
 			foreach ($keys as $key)
 			{
 				if (trim($key))
@@ -317,7 +317,7 @@ class PicowapiTable extends Table implements VersionableTableInterface, Taggable
 					$cleanKeys[] = trim($key);
 				}
 			}
-			
+
 			// Put array back together delimited by ", "
 			$this->metakey = implode(', ', $cleanKeys);
 		}
@@ -325,15 +325,15 @@ class PicowapiTable extends Table implements VersionableTableInterface, Taggable
 		{
 			$this->metakey = '';
 		}
-		
+
 		if ($this->metadesc === null)
 		{
 			$this->metadesc = '';
 		}
-		
+
 		return true;
 	}
-	
+
 	/**
 	 * Overrides Table::store to set modified data and user id.
 	 *
@@ -347,21 +347,21 @@ class PicowapiTable extends Table implements VersionableTableInterface, Taggable
 	{
 		$date = Factory::getDate()->toSql();
 		$user = Factory::getUser();
-		
+
 		// Transform the params field
 		if (is_array($this->params))
 		{
 			$registry     = new Registry($this->params);
 			$this->params = (string) $registry;
 		}
-		
-		
+
+
 		// Set created date if not set.
 		if (!(int) $this->created)
 		{
 			$this->created = $date;
 		}
-		
+
 		if ($this->id)
 		{
 			// Existing item
@@ -375,39 +375,39 @@ class PicowapiTable extends Table implements VersionableTableInterface, Taggable
 			{
 				$this->created_by = $user->get('id');
 			}
-			
+
 			// Set modified to created date if not set
 			if (!(int) $this->modified)
 			{
 				$this->modified = $this->created;
 			}
-			
+
 			// Set modified_by to created_by user if not set
 			if (empty($this->modified_by))
 			{
 				$this->modified_by = $this->created_by;
 			}
 		}
-		
+
 		// Verify that the alias is unique
 		$app = Factory::getApplication();
-		
+
 		/**
 		 * @var PicowapisComponent $component
 		 */
 		$component = $app->bootComponent('com_picowapis');
 		$table     = $component->getMVCFactory()->createTable('Picowapi', 'Table', ['dbo' => $this->getDbo()]);
-		
+
 		if ($table->load(['alias' => $this->alias, 'catid' => $this->catid]) && ($table->id != $this->id || $this->id == 0))
 		{
 			$this->setError(Text::_('JLIB_DATABASE_ERROR_ARTICLE_UNIQUE_ALIAS'));
-			
+
 			return false;
 		}
-		
+
 		return parent::store($updateNulls);
 	}
-	
+
 	/**
 	 * Get the type alias for UCM features
 	 *
@@ -419,5 +419,5 @@ class PicowapiTable extends Table implements VersionableTableInterface, Taggable
 	{
 		return $this->typeAlias;
 	}
-	
+
 }

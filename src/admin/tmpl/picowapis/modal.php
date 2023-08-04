@@ -59,8 +59,8 @@ $onclick   = $this->escape($function);
 					<?php $lang = ''; ?>
 					<tr class="row<?php echo $i % 2; ?>">
 						<th scope="row">
-							<a class="select-link" href="javascript:void(0)" data-function="<?php echo $this->escape($onclick); ?>" data-id="<?php echo $item->id; ?>" data-title="<?php echo $this->escape($item->deviceid); ?>">
-								<?php echo $this->escape($item->deviceid); ?>
+							<a class="select-link" href="javascript:void(0)" data-function="<?php echo $this->escape($onclick); ?>" data-id="<?php echo $item->id; ?>" data-title="<?php echo $this->escape($item->name); ?>">
+								<?php echo $this->escape($item->name); ?>
 							</a>
 						</th>
 						<td>

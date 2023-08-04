@@ -1,12 +1,12 @@
 CREATE TABLE IF NOT EXISTS `#__picowapis_details` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `alias` varchar(400) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL DEFAULT '',
-  `deviceid` varchar(255) NOT NULL DEFAULT '',
+  `name` varchar(255) NOT NULL DEFAULT '',
   `ipaddress` varchar(255) NOT NULL DEFAULT '',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 DEFAULT COLLATE=utf8mb4_unicode_ci;
 
-INSERT INTO `#__picowapis_details` (`deviceid`,`ipaddress`) VALUES
+INSERT INTO `#__picowapis_details` (`name`,`ipaddress`) VALUES
 ('e660a4931754432c','192.168.1.10'),
 ('e660a4931754432d','192.168.1.11'),
 ('f660a4931754432e','192.168.1.12'),

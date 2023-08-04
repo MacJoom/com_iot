@@ -168,7 +168,7 @@ class AssociationsHelper extends AssociationExtensionHelper
 			switch ($typeName)
 			{
 				case 'picowapi':
-					$fields['title'] = 'a.deviceid';
+					$fields['title'] = 'a.name';
 					$fields['state'] = 'a.published';
 
 					$support['state'] = true;

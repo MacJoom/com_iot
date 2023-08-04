@@ -39,7 +39,7 @@ $tmpl    = $isModal || $input->get('tmpl', '', 'cmd') === 'component' ? '&tmpl=c
 
 <form action="<?php echo Route::_('index.php?option=com_picowapis&layout=' . $layout . $tmpl . '&id=' . (int) $this->item->id); ?>" method="post" name="adminForm" id="picowapi-form" class="form-validate">
 
-    <?php echo LayoutHelper::render('edit.deviceid_alias_ipaddress', $this, JPATH_COMPONENT); ?>
+    <?php echo LayoutHelper::render('edit.title_alias_ipaddress', $this, JPATH_COMPONENT); ?>
 
 	<div>
 		<?php echo HTMLHelper::_('uitab.startTabSet', 'myTab', array('active' => 'details')); ?>

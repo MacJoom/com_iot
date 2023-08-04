@@ -63,6 +63,7 @@
             <filename>config.xml</filename>
             <folder>src</folder>
             <folder>forms</folder>
+            <folder>layouts</folder>
             <folder>services</folder>
             <folder>sql</folder>
             <folder>tmpl</folder>

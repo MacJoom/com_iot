@@ -27,7 +27,7 @@
 		</field>
 
 		<field
-			name="show_deviceid"
+			name="show_name"
 			type="radio"
 			label="COM_PICOWAPIS_FIELD_PARAMS_NAME_LABEL"
 			default="1"

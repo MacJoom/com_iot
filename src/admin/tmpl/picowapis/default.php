@@ -59,7 +59,7 @@ if ($saveOrder && !empty($this->items))
 									<?php echo HTMLHelper::_('grid.checkall'); ?>
 								</td>
 								<th scope="col" style="width:1%" class="text-center d-none d-md-table-cell">
-									<?php echo HTMLHelper::_('searchtools.sort', 'COM_PICOWAPIS_TABLE_TABLEHEAD_NAME', 'a.deviceid', $listDirn, $listOrder); ?>
+									<?php echo HTMLHelper::_('searchtools.sort', 'COM_PICOWAPIS_TABLE_TABLEHEAD_NAME', 'a.name', $listDirn, $listOrder); ?>
 								</th>
 								<th scope="col" style="width:10%" class="d-none d-md-table-cell">
 									<?php echo HTMLHelper::_('searchtools.sort', 'JGRID_HEADING_ACCESS', 'access_level', $listDirn, $listOrder); ?>
@@ -116,11 +116,11 @@ if ($saveOrder && !empty($this->items))
 										<?php echo HTMLHelper::_('jgrid.checkedout', $i, $item->editor, $item->checked_out_time, 'picowapis.', true); ?>
 									<?php endif; ?>
 									<div>
-										<?php echo $this->escape($item->deviceid); ?>
+										<?php echo $this->escape($item->name); ?>
 									</div>
 									<?php $editIcon = '<span class="fa fa-pencil-square mr-2" aria-hidden="true"></span>'; ?>
-									<a class="hasTooltip" href="<?php echo Route::_('index.php?option=com_picowapis&task=picowapi.edit&id=' . (int) $item->id); ?>" title="<?php echo Text::_('JACTION_EDIT'); ?> <?php echo $this->escape(addslashes($item->deviceid)); ?>">
-										<?php echo $editIcon; ?><?php echo $this->escape($item->deviceid); ?></a>
+									<a class="hasTooltip" href="<?php echo Route::_('index.php?option=com_picowapis&task=picowapi.edit&id=' . (int) $item->id); ?>" title="<?php echo Text::_('JACTION_EDIT'); ?> <?php echo $this->escape(addslashes($item->name)); ?>">
+										<?php echo $editIcon; ?><?php echo $this->escape($item->name); ?></a>
 									<div class="small">
 										<?php echo Text::_('JCATEGORY') . ': ' . $this->escape($item->category_title); ?>
 									</div>

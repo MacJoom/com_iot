@@ -14,9 +14,9 @@
 		/>
 
 		<field
-			name="deviceid"
+			name="name"
 			type="text"
-			label="COM_PICOWAPIS_FIELD_DEVICEID_LABEL"
+			label="COM_PICOWAPIS_FIELD_NAME_LABEL"
 			size="40"
 			required="true"
 		 />
@@ -119,9 +119,9 @@
 	<fields name="params" label="JGLOBAL_FIELDSET_DISPLAY_OPTIONS">
 		<fieldset name="display" label="JGLOBAL_FIELDSET_DISPLAY_OPTIONS">
 			<field
-				name="show_deviceid"
+				name="show_name"
 				type="list"
-				label="COM_PICOWAPIS_FIELD_PARAMS_DEVICEID_LABEL"
+				label="COM_PICOWAPIS_FIELD_PARAMS_NAME_LABEL"
 				useglobal="true"
 			>
 				<option value="0">JHIDE</option>
