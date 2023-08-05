@@ -1,9 +1,9 @@
 <?php
 declare(strict_types=1);
 /**
- * Picowapi
+ * Iotapi
  *
- * @package    Picowapi
+ * @package    Iotapi
  *
  * @author     Martin KOPP "MacJoom" <martin.kopp@infotech.ch>
  * @copyright  Copyright(c) 2009 - 2021 Martin KOPP "MacJoom". All rights reserved
@@ -11,14 +11,14 @@ declare(strict_types=1);
  * @link       https://infotech.ch
  */
 
-namespace ITC\Component\Picowapis\Administrator\Helper;
+namespace ITC\Component\Iotapis\Administrator\Helper;
 
 defined('_JEXEC') or die;
 
 use Joomla\CMS\Association\AssociationExtensionHelper;
 use Joomla\CMS\Language\Associations;
 use Joomla\CMS\Table\Table;
-use ITC\Component\Picowapis\Site\Helper\AssociationHelper;
+use ITC\Component\Iotapis\Site\Helper\AssociationHelper;
 
 /**
  * Content associations helper.
@@ -34,7 +34,7 @@ class AssociationsHelper extends AssociationExtensionHelper
 	 *
 	 * @since   3.7.0
 	 */
-	protected $extension = 'com_picowapis';
+	protected $extension = 'com_iotapis';
 
 	/**
 	 * Array of item types
@@ -43,7 +43,7 @@ class AssociationsHelper extends AssociationExtensionHelper
 	 *
 	 * @since   3.7.0
 	 */
-	protected $itemTypes = array('picowapi', 'category');
+	protected $itemTypes = array('iotapi', 'category');
 
 	/**
 	 * Has the extension association support
@@ -127,8 +127,8 @@ class AssociationsHelper extends AssociationExtensionHelper
 
 		switch ($typeName)
 		{
-			case 'picowapi':
-				$table = Table::getInstance('PicowapiTable', 'Joomla\\Component\\Picowapis\\Administrator\\Table\\');
+			case 'iotapi':
+				$table = Table::getInstance('IotapiTable', 'Joomla\\Component\\Iotapis\\Administrator\\Table\\');
 				break;
 
 			case 'category':
@@ -167,7 +167,7 @@ class AssociationsHelper extends AssociationExtensionHelper
 		{
 			switch ($typeName)
 			{
-				case 'picowapi':
+				case 'iotapi':
 					$fields['title'] = 'a.name';
 					$fields['state'] = 'a.published';
 
@@ -177,10 +177,10 @@ class AssociationsHelper extends AssociationExtensionHelper
 					$support['save2copy'] = true;
 
 					$tables = array(
-						'a' => '#__picowapis_details'
+						'a' => '#__iotapis_details'
 					);
 
-					$title = 'picowapi';
+					$title = 'iotapi';
 					break;
 
 				case 'category':

@@ -1,4 +1,4 @@
-<?
+<?php
 declare(strict_types=1);
 /**
  * Iotapi
@@ -10,19 +10,20 @@ declare(strict_types=1);
  * @license    GNU General Public License version 2 or later; see LICENSE.txt
  * @link       https://infotech.ch
  */
-namespace ITC\Component\Iotapis\Site\Controller;
+
+namespace ITC\Component\Iotapis\Administrator\Controller;
 
 defined('_JEXEC') or die;
 
-use Joomla\CMS\MVC\Controller\BaseController;
+use Joomla\CMS\MVC\Controller\AdminController;
 use Joomla\CMS\MVC\Factory\MVCFactoryInterface;
 
 /**
- * Iotapis Component Controller
+ * Iotapis list controller class.
  *
  * @since  0.1.0
  */
-class DisplayController extends BaseController
+class IotapisController extends AdminController
 {
 	/**
 	 * Constructor.
@@ -39,22 +40,22 @@ class DisplayController extends BaseController
 	public function __construct($config = array(), MVCFactoryInterface $factory = null, $app = null, $input = null)
 	{
 		parent::__construct($config, $factory, $app, $input);
+
 	}
 
 	/**
-	 * Method to display a view.
+	 * Proxy for getModel.
 	 *
-	 * @param   boolean  $cachable   If true, the view output will be cached
-	 * @param   array    $urlparams  An array of safe URL parameters and their variable types, for valid values see {@link \JFilterInput::clean()}.
+	 * @param   string  $name    The name of the model.
+	 * @param   string  $prefix  The prefix for the PHP class name.
+	 * @param   array   $config  Array of configuration parameters.
 	 *
-	 * @return  static  This object to support chaining.
+	 * @return  \Joomla\CMS\MVC\Model\BaseDatabaseModel
 	 *
 	 * @since  0.1.0
 	 */
-	public function display($cachable = false, $urlparams = array())
+	public function getModel($name = 'Iotapi', $prefix = 'Administrator', $config = array('ignore_request' => true))
 	{
-		parent::display($cachable);
-
-		return $this;
+		return parent::getModel($name, $prefix, $config);
 	}
 }

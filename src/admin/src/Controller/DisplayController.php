@@ -1,9 +1,9 @@
 <?php
 declare(strict_types=1);
 /**
- * Picowapi
+ * Iotapi
  *
- * @package    Picowapi
+ * @package    Iotapi
  *
  * @author     Martin KOPP "MacJoom" <martin.kopp@infotech.ch>
  * @copyright  Copyright(c) 2009 - 2021 Martin KOPP "MacJoom". All rights reserved
@@ -11,14 +11,14 @@ declare(strict_types=1);
  * @link       https://infotech.ch
  */
 
-namespace ITC\Component\Picowapis\Administrator\Controller;
+namespace ITC\Component\Iotapis\Administrator\Controller;
 
 defined('_JEXEC') or die;
 
 use Joomla\CMS\MVC\Controller\BaseController;
 
 /**
- * Picowapis master display controller.
+ * Iotapis master display controller.
  *
  * @since  0.1.0
  */
@@ -30,7 +30,7 @@ class DisplayController extends BaseController
 	 * @var    string
 	 * @since  0.1.0
 	 */
-	protected $default_view = 'picowapis';
+	protected $default_view = 'iotapis';
 
 	/**
 	 * Method to display a view.

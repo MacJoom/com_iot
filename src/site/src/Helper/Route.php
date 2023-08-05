@@ -1,9 +1,9 @@
 <?php
 declare(strict_types=1);
 /**
- * Picowapi
+ * Iotapi
  *
- * @package    Picowapi
+ * @package    Iotapi
  *
  * @author     Martin KOPP "MacJoom" <martin.kopp@infotech.ch>
  * @copyright  Copyright(c) 2009 - 2021 Martin KOPP "MacJoom". All rights reserved
@@ -11,7 +11,7 @@ declare(strict_types=1);
  * @link       https://infotech.ch
  */
 
-namespace ITC\Component\Picowapis\Site\Helper;
+namespace ITC\Component\Iotapis\Site\Helper;
 
 defined('_JEXEC') or die;
 
@@ -19,30 +19,30 @@ use Joomla\CMS\Categories\CategoryNode;
 use Joomla\CMS\Language\Multilanguage;
 
 /**
- * Picowapis Component Route Helper
+ * Iotapis Component Route Helper
  *
  * @static
  * @package     Joomla.Site
- * @subpackage  com_picowapis
+ * @subpackage  com_iotapis
  * @since       1.5
  */
 abstract class Route
 {
 	/**
-	 * Get the URL route for a picowapis from a picowapi ID, picowapis category ID and language
+	 * Get the URL route for a iotapis from a iotapi ID, iotapis category ID and language
 	 *
-	 * @param   integer  $id        The id of the picowapis
-	 * @param   integer  $catid     The id of the picowapis's category
+	 * @param   integer  $id        The id of the iotapis
+	 * @param   integer  $catid     The id of the iotapis's category
 	 * @param   mixed    $language  The id of the language being used.
 	 *
-	 * @return  string  The link to the picowapis
+	 * @return  string  The link to the iotapis
 	 *
 	 * @since   1.5
 	 */
-	public static function getPicowapisRoute($id, $catid, $language = 0)
+	public static function getIotapisRoute($id, $catid, $language = 0)
 	{
 		// Create the link
-		$link = 'index.php?option=com_picowapis&view=picowapi&id=' . $id;
+		$link = 'index.php?option=com_iotapis&view=iotapi&id=' . $id;
 
 		if ($catid > 1)
 		{
@@ -58,12 +58,12 @@ abstract class Route
 	}
 
 	/**
-	 * Get the URL route for a picowapis category from a picowapis category ID and language
+	 * Get the URL route for a iotapis category from a iotapis category ID and language
 	 *
-	 * @param   mixed  $catid     The id of the picowapis's category either an integer id or an instance of CategoryNode
+	 * @param   mixed  $catid     The id of the iotapis's category either an integer id or an instance of CategoryNode
 	 * @param   mixed  $language  The id of the language being used.
 	 *
-	 * @return  string  The link to the picowapis
+	 * @return  string  The link to the iotapis
 	 *
 	 * @since   1.5
 	 */
@@ -85,7 +85,7 @@ abstract class Route
 		else
 		{
 			// Create the link
-			$link = 'index.php?option=com_picowapis&view=category&id=' . $id;
+			$link = 'index.php?option=com_iotapis&view=category&id=' . $id;
 
 			if ($language && $language !== '*' && Multilanguage::isEnabled())
 			{
