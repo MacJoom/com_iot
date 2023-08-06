@@ -19,6 +19,9 @@ use Joomla\CMS\Factory;
 use Joomla\CMS\Language\Associations;
 use Joomla\CMS\Language\LanguageHelper;
 use Joomla\CMS\MVC\Model\AdminModel;
+use Joomla\CMS\Object\CMSObject;
+use Joomla\Registry\Registry;
+use Joomla\Utilities\ArrayHelper;
 
 /**
  * Item Model for a Iotapi.
@@ -134,7 +137,64 @@ class IotapiModel extends AdminModel
 		return $item;
 	}
 
-	/**
+    /**
+     * Method to get a single record.
+     *
+     * @param   integer  $pk  The id of the primary key.
+     *
+     * @return  mixed  Object on success, false on failure.
+     *
+     * @since  0.1.0
+     */
+    public function getItemByFieldname($field, $value = null)
+    {
+        if ($value == null)
+            return null;
+
+        $table  = $this->getTable();
+        $db     = $this->getDatabase();
+        $tablename = $table->getTableName();
+        $query = $db->getQuery(true)
+            ->select('*')
+            ->from($db->quoteName($tablename));
+        $fields = array_keys($this->getProperties());
+
+        // Check that $field is in the table.
+        if (!\in_array($field, $fields)) {
+            throw new \UnexpectedValueException(sprintf('Missing field in database: %s &#160; %s.', \get_class($this), $field));
+        }
+
+        // Add the search tuple to the query.
+        $query->where($db->quoteName($field) . ' = ' . $db->quote($value));
+
+        $db->setQuery($query);
+
+        $row = $db->loadAssoc();
+
+        // Check that we have a result.
+        if (empty($row)) {
+            $result = false;
+        } else {
+            // Bind the object with the row and return.
+            $result = $table->bind($row);
+        }
+        if ($result) {
+            $properties = $table->getProperties(1);
+            $item       = ArrayHelper::toObject($properties, CMSObject::class);
+
+            if (property_exists($item, 'params')) {
+                $registry     = new Registry($item->params);
+                $item->params = $registry->toArray();
+            }
+
+            return $item;
+
+        } else {
+            return null;
+        }
+    }
+
+    /**
 	 * Preprocess the form.
 	 *
 	 * @param   \JForm  $form   Form object.
