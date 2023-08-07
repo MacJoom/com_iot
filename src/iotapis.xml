@@ -51,7 +51,7 @@
         <!-- Menu entries -->
         <menu view="iotapis">COM_IOTAPIS</menu>
         <submenu>
-            <menu link="option=com_iotapis">COM_IOTAPIS</menu>
+            <menu link="option=com_iotapis">COM_IOTAPIS_IOTAPIS</menu>
             <menu link="option=com_categories&amp;extension=com_iotapis"
                   view="categories" img="class:iotapis-cat"
                   alt="Iotapis/Categories">JCATEGORY

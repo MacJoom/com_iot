@@ -46,6 +46,22 @@
 		</field>
 
 		<field
+			name="title"
+			type="text"
+			label="COM_IOTAPIS_FIELD_TITLE_LABEL"
+			size="80"
+			hint="COM_IOTAPIS_FIELD_TITLE_PLACEHOLDER"
+		/>
+
+		<field
+			name="iotdata"
+			type="textarea"
+			label="COM_IOTAPIS_FIELD_IOTDATA_LABEL"
+			rows="5"
+			hint="COM_IOTAPIS_FIELD_IOTDATA_PLACEHOLDER"
+		/>
+
+		<field
 			name="published"
 			type="list"
 			label="JSTATUS"

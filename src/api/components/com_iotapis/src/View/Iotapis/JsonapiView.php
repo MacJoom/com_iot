@@ -30,6 +30,7 @@ class JsonapiView extends BaseApiView
 		'name',
         'ipaddress',
 		'alias',
+        'iotdata',
         'catid',
 		'category_title',
 		'language_title',
@@ -39,7 +40,7 @@ class JsonapiView extends BaseApiView
 		'access',
 		'ordering',
 	];
-	
+
 	/**
 	 * @var string[] $fieldsToRenderList
 	 */
@@ -48,6 +49,7 @@ class JsonapiView extends BaseApiView
 		'name',
         'ipaddress',
 		'alias',
+        'iotdata',
         'catid',
 		'category_title',
 		'checked_out',

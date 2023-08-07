@@ -19,7 +19,7 @@ ALTER TABLE `#__iotapis_details` ADD KEY `idx_asset_id` (`asset_id`);
 
 ALTER TABLE `#__iotapis_details` ADD COLUMN  `access` int(10) unsigned NOT NULL DEFAULT 0 AFTER `alias`;
 
-ALTER TABLE `#__iotapis_details` ADD COLUMN  `metadesc` text BEFORE `access`;
+ALTER TABLE `#__iotapis_details` ADD COLUMN  `metadesc` text AFTER `access`;
 
 ALTER TABLE `#__iotapis_details` ADD KEY `idx_access` (`access`);
 
@@ -52,3 +52,16 @@ ALTER TABLE `#__iotapis_details` ADD COLUMN `checked_out` int(10) unsigned DEFAU
 ALTER TABLE `#__iotapis_details` ADD KEY `idx_checkout` (`checked_out`);
 
 ALTER TABLE `#__iotapis_details` ADD COLUMN `checked_out_time` datetime AFTER `alias`;
+
+CREATE TABLE IF NOT EXISTS `#__iotapis_data` (
+    `id` int(11) NOT NULL AUTO_INCREMENT,
+    `alias` varchar(400) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL DEFAULT '',
+    `name` varchar(255) NOT NULL DEFAULT '',
+    `iotdata` text NOT NULL DEFAULT '',
+    PRIMARY KEY (`id`)
+    ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 DEFAULT COLLATE=utf8mb4_unicode_ci;
+
+ALTER TABLE `#__iotapis_data` ADD COLUMN  `access` int(10) unsigned NOT NULL DEFAULT 0 AFTER `alias`;
+
+ALTER TABLE `#__iotapis_data` ADD KEY `idx_access` (`access`);
+
