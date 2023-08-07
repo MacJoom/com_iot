@@ -27,6 +27,12 @@ ALTER TABLE `#__iotapis_details` ADD COLUMN  `catid` int(11) NOT NULL DEFAULT 0 
 
 ALTER TABLE `#__iotapis_details` ADD COLUMN  `created` datetime AFTER `catid`;
 
+ALTER TABLE `#__iotapis_details` ADD COLUMN  `created_by` int(10) unsigned NOT NULL DEFAULT 0 AFTER `created`;
+
+ALTER TABLE `#__iotapis_details` ADD COLUMN  `modified` datetime AFTER `created_by`;
+
+ALTER TABLE `#__iotapis_details` ADD COLUMN  `modified_by` int(10) unsigned NOT NULL DEFAULT 0 AFTER `modified`;
+
 ALTER TABLE `#__iotapis_details` ADD COLUMN  `state` tinyint(3) NOT NULL DEFAULT 0 AFTER `alias`;
 
 ALTER TABLE `#__iotapis_details` ADD KEY `idx_catid` (`catid`);
@@ -65,3 +71,4 @@ ALTER TABLE `#__iotapis_data` ADD COLUMN  `access` int(10) unsigned NOT NULL DEF
 
 ALTER TABLE `#__iotapis_data` ADD KEY `idx_access` (`access`);
 
+ALTER TABLE `#__iotapis_data` ADD COLUMN  `created` datetime AFTER `alias`;

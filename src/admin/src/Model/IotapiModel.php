@@ -103,6 +103,34 @@ class IotapiModel extends AdminModel
 		return $data;
 	}
 
+    /**
+     * Method to save the form data.
+     *
+     * @param   array  $data  The form data.
+     *
+     * @return  boolean  True on success.
+     *
+     * @since   4.3.0
+     */
+    public function save($data)
+    {
+        $table = $this->getTable('IotapiData');
+        $input = Factory::getApplication()->getInput();
+        $fields = $table->getFields();
+        $key = $table->getKeyName();
+        $recordKey = $data[$key];
+        $data[$key] = ''; //make sure we get a new record for data
+        foreach ($fields as $field) {
+            if (array_key_exists($field->Field, $data)) {
+                continue;
+            }
+            $data[$field->Field] = $table->{$field->Field};
+        }
+        $table->save($data);
+        $data[$key] = $recordKey; //restore key for detail
+        return parent::save($data);
+    }
+
 	/**
 	 * Method to get a single record.
 	 *

@@ -116,24 +116,6 @@ class IotapiDataTable extends Table implements VersionableTableInterface, Taggab
 	 */
 	public function bind($array, $ignore = '')
 	{
-		if (isset($array['params']) && \is_array($array['params']))
-		{
-			$registry        = new Registry($array['params']);
-			$array['params'] = (string) $registry;
-		}
-
-		if (isset($array['metadata']) && \is_array($array['metadata']))
-		{
-			$registry          = new Registry($array['metadata']);
-			$array['metadata'] = (string) $registry;
-		}
-
-		// Bind the rules.
-		if (isset($array['rules']) && \is_array($array['rules']))
-		{
-			$rules = new Rules($array['rules']);
-			$this->setRules($rules);
-		}
 
 		return parent::bind($array, $ignore);
 	}
@@ -166,12 +148,7 @@ class IotapiDataTable extends Table implements VersionableTableInterface, Taggab
 			return false;
 		}
 
-		if (trim($this->alias) == '')
-		{
-			$this->alias = $this->title;
-		}
-
-		$this->alias = ApplicationHelper::stringURLSafe($this->alias, $this->language);
+		$this->alias = ApplicationHelper::stringURLSafe($this->alias);
 
 		if (trim(str_replace('-', '', $this->alias)) == '')
 		{
@@ -218,66 +195,6 @@ class IotapiDataTable extends Table implements VersionableTableInterface, Taggab
 			$this->hits = 0;
 		}
 
-		// Set publish_up to null if not set
-		if (!$this->publish_up)
-		{
-			$this->publish_up = null;
-		}
-
-		// Set publish_down to null if not set
-		if (!$this->publish_down)
-		{
-			$this->publish_down = null;
-		}
-
-		// Check the publish down date is not earlier than publish up.
-		if (!is_null($this->publish_up) && !is_null($this->publish_down) && $this->publish_down < $this->publish_up)
-		{
-			// Swap the dates.
-			$temp               = $this->publish_up;
-			$this->publish_up   = $this->publish_down;
-			$this->publish_down = $temp;
-		}
-
-		// Clean up keywords -- eliminate extra spaces between phrases
-		// and cr (\r) and lf (\n) characters from string
-		if (!empty($this->metakey))
-		{
-			// Only process if not empty
-
-			// Array of characters to remove
-			$badCharacters = ["\n", "\r", "\"", '<', '>'];
-
-			// Remove bad characters
-			$afterClean = StringHelper::str_ireplace($badCharacters, '', $this->metakey);
-
-			// Create array using commas as delimiter
-			$keys = explode(',', $afterClean);
-
-			$cleanKeys = [];
-
-			foreach ($keys as $key)
-			{
-				if (trim($key))
-				{
-					// Ignore blank keywords
-					$cleanKeys[] = trim($key);
-				}
-			}
-
-			// Put array back together delimited by ", "
-			$this->metakey = implode(', ', $cleanKeys);
-		}
-		else
-		{
-			$this->metakey = '';
-		}
-
-		if ($this->metadesc === null)
-		{
-			$this->metadesc = '';
-		}
-
 		return true;
 	}
 
@@ -308,7 +225,7 @@ class IotapiDataTable extends Table implements VersionableTableInterface, Taggab
 		 * @var IotapisComponent $component
 		 */
 		$component = $app->bootComponent('com_iotapis');
-		$table     = $component->getMVCFactory()->createTable('Iotapi.data', 'Table', ['dbo' => $this->getDbo()]);
+		$table     = $component->getMVCFactory()->createTable('IotapiData', 'Table', ['dbo' => $this->getDbo()]);
 
 		if ($table->load(['alias' => $this->alias]) && ($table->id != $this->id || $this->id == 0))
 		{

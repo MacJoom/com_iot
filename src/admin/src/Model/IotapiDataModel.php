@@ -52,7 +52,24 @@ class IotapiDataModel extends AdminModel
 	 * @var  string
 	 */
 
-	/**
+    /**
+     * Method to save the form data.
+     *
+     * @param   array  $data  The form data.
+     *
+     * @return  boolean  True on success.
+     *
+     * @since   4.3.0
+     */
+    public function save($data)
+    {
+        $table = $this->getTable('IotapisData');
+        $input = Factory::getApplication()->getInput();
+
+        return parent::save($data);
+    }
+
+    /**
 	 * Method to get the row form.
 	 *
 	 * @param   array    $data      Data for the form.
