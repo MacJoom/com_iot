@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="plugin" group="webservices" method="upgrade">
+	<name>PLG_WEBSERVICES_IOT</name>
+	<creationDate>2021-08-07</creationDate>
+	<author>Martin KOPP "MacJoom"</author>
+	<authorEmail>martin.kopp@infotech.ch</authorEmail>
+	<authorUrl>https://infotech.ch</authorUrl>
+	<copyright>Copyright(c) 2009 - 2021 Martin KOPP "MacJoom". All rights reserved</copyright>
+	<license>GNU General Public License version 2 or later; see LICENSE.txt</license>
+	<version>0.1.1</version>
+	<description>PLG_WEBSERVICES_IOT_XML_DESCRIPTION</description>
+
+	<!-- Scripts to run on installation -->
+	<scriptfile>script.php</scriptfile>
+
+	<!-- Plugin files -->
+	<files>
+		<filename plugin="iot">iot.php</filename>
+		<filename>LICENSE</filename>
+		<folder>language</folder>
+	</files>
+
+	<!-- Update servers -->
+	<updateservers>
+		<server type="extension" priority="1" name="iot">https://www.example.com/plg_webservices_iot.xml</server>
+	</updateservers>
+</extension>
