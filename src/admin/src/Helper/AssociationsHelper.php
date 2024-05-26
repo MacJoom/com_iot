@@ -1,9 +1,9 @@
 <?php
 declare(strict_types=1);
 /**
- * Iotapi
+ * AssociationsHelper
  *
- * @package    Iotapi
+ * @package    Iot
  *
  * @author     Martin KOPP "MacJoom" <martin.kopp@infotech.ch>
  * @copyright  Copyright(c) 2009 - 2021 Martin KOPP "MacJoom". All rights reserved
@@ -11,14 +11,14 @@ declare(strict_types=1);
  * @link       https://infotech.ch
  */
 
-namespace ITC\Component\Iotapis\Administrator\Helper;
+namespace ITC\Component\Iot\Administrator\Helper;
 
 defined('_JEXEC') or die;
 
 use Joomla\CMS\Association\AssociationExtensionHelper;
 use Joomla\CMS\Language\Associations;
 use Joomla\CMS\Table\Table;
-use ITC\Component\Iotapis\Site\Helper\AssociationHelper;
+use ITC\Component\Iot\Site\Helper\AssociationHelper;
 
 /**
  * Content associations helper.
@@ -34,7 +34,7 @@ class AssociationsHelper extends AssociationExtensionHelper
 	 *
 	 * @since   3.7.0
 	 */
-	protected $extension = 'com_iotapis';
+	protected $extension = 'com_iot';
 
 	/**
 	 * Array of item types
@@ -43,7 +43,7 @@ class AssociationsHelper extends AssociationExtensionHelper
 	 *
 	 * @since   3.7.0
 	 */
-	protected $itemTypes = array('iotapi', 'category');
+	protected $itemTypes = array('device', 'category');
 
 	/**
 	 * Has the extension association support
@@ -127,8 +127,8 @@ class AssociationsHelper extends AssociationExtensionHelper
 
 		switch ($typeName)
 		{
-			case 'iotapi':
-				$table = Table::getInstance('IotapiTable', 'Joomla\\Component\\Iotapis\\Administrator\\Table\\');
+			case 'device':
+				$table = Table::getInstance('DeviceTable', 'Joomla\\Component\\Iot\\Administrator\\Table\\');
 				break;
 
 			case 'category':
@@ -167,7 +167,7 @@ class AssociationsHelper extends AssociationExtensionHelper
 		{
 			switch ($typeName)
 			{
-				case 'iotapi':
+				case 'device':
 					$fields['title'] = 'a.name';
 					$fields['state'] = 'a.published';
 
@@ -177,10 +177,10 @@ class AssociationsHelper extends AssociationExtensionHelper
 					$support['save2copy'] = true;
 
 					$tables = array(
-						'a' => '#__iotapis_details'
+						'a' => '#__iot_details'
 					);
 
-					$title = 'iotapi';
+					$title = 'device';
 					break;
 
 				case 'category':

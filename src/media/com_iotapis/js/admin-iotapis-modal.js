@@ -6,21 +6,21 @@
   'use strict';
   /**
     * Javascript to insert the link
-    * View element calls jSelectIotapi when a iotapi is clicked
-    * jSelectIotapi creates the link tag, sends it to the editor,
+    * View element calls jSelectDevice when a device is clicked
+    * jSelectDevice creates the link tag, sends it to the editor,
     * and closes the select frame.
     */
 
-  window.jSelectIotapi = function (id, title, catid, object, link, lang) {
+  window.jSelectDevice = function (id, title, catid, object, link, lang) {
     var hreflang = '';
 
-    if (!Joomla.getOptions('xtd-iotapis')) {
+    if (!Joomla.getOptions('xtd-devicedatalist')) {
       // Something went wrong
       window.parent.Joomla.Modal.getCurrent().close();
       return false;
     }
 
-    var _Joomla$getOptions = Joomla.getOptions('xtd-iotapis'),
+    var _Joomla$getOptions = Joomla.getOptions('xtd-devicedatalist'),
         editor = _Joomla$getOptions.editor;
 
     if (lang !== '') {
@@ -43,8 +43,8 @@
         event.preventDefault();
         var functionName = event.target.getAttribute('data-function');
 
-        if (functionName === 'jSelectIotapi') {
-          // Used in xtd_iotapis
+        if (functionName === 'jSelectDevice') {
+          // Used in xtd_devicedatalist
           window[functionName](event.target.getAttribute('data-id'), event.target.getAttribute('data-title'), null, null, event.target.getAttribute('data-uri'), event.target.getAttribute('data-language'), null);
         } else {
           // Used in com_menus

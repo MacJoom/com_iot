@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <config>
 	<fieldset
-		name="iotapi"
-		label="COM_IOTAPIS_FIELD_CONFIG_INDIVIDUAL_IOTAPI_DISPLAY"
-		description="COM_IOTAPIS_FIELD_CONFIG_INDIVIDUAL_IOTAPI_DESC"
+		name="iot"
+		label="COM_IOT_FIELD_CONFIG_INDIVIDUAL_IOT_DISPLAY"
+		description="COM_IOT_FIELD_CONFIG_INDIVIDUAL_IOT_DESC"
 		>
 		<field
-			name="show_iotapi_name_label"
+			name="show_iot_name_label"
 			type="list"
-			label="COM_IOTAPIS_FIELD_IOTAPI_SHOW_CATEGORY_LABEL"
+			label="COM_IOT_FIELD_IOT_SHOW_CATEGORY_LABEL"
 			default="1"
 			>
 			<option value="0">JNO</option>
@@ -29,7 +29,7 @@
 		<field
 			name="show_name"
 			type="radio"
-			label="COM_IOTAPIS_FIELD_PARAMS_NAME_LABEL"
+			label="COM_IOT_FIELD_PARAMS_NAME_LABEL"
 			default="1"
 			class="switcher"
 			>
@@ -40,7 +40,7 @@
 		<field
 				name="show_ipaddress"
 				type="radio"
-				label="COM_IOTAPIS_FIELD_PARAMS_IPADDRESS_LABEL"
+				label="COM_IOT_FIELD_PARAMS_IPADDRESS_LABEL"
 				default="1"
 				class="switcher"
 		>
@@ -60,7 +60,7 @@
 			label="JCONFIG_PERMISSIONS_LABEL"
 			validate="rules"
 			filter="rules"
-			component="com_iotapis"
+			component="com_iot"
 			section="component"
 		/>
 	</fieldset>

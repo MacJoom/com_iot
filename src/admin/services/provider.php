@@ -1,9 +1,9 @@
 <?php
 declare(strict_types=1);
 /**
- * Iotapi
+ * provider
  *
- * @package    Iotapi
+ * @package    Iot
  *
  * @author     Martin KOPP "MacJoom" <martin.kopp@infotech.ch>
  * @copyright  Copyright(c) 2009 - 2021 Martin KOPP "MacJoom". All rights reserved
@@ -22,13 +22,13 @@ use Joomla\CMS\Extension\Service\Provider\ComponentDispatcherFactory;
 use Joomla\CMS\Extension\Service\Provider\MVCFactory;
 use Joomla\CMS\HTML\Registry;
 use Joomla\CMS\MVC\Factory\MVCFactoryInterface;
-use ITC\Component\Iotapis\Administrator\Extension\IotapisComponent;
-use ITC\Component\Iotapis\Administrator\Helper\AssociationsHelper;
+use ITC\Component\Iot\Administrator\Extension\IotComponent;
+use ITC\Component\Iot\Administrator\Helper\AssociationsHelper;
 use Joomla\DI\Container;
 use Joomla\DI\ServiceProviderInterface;
 
 /**
- * The iotapis service provider.
+ * The iot service provider.
  * https://github.com/joomla/joomla-cms/pull/20217
  *
  * @since  0.1.0
@@ -48,15 +48,15 @@ return new class implements ServiceProviderInterface
 	{
 		$container->set(AssociationExtensionInterface::class, new AssociationsHelper);
 
-		$container->registerServiceProvider(new CategoryFactory('\\ITC\\Component\\Iotapis'));
-		$container->registerServiceProvider(new MVCFactory('\\ITC\\Component\\Iotapis'));
-		$container->registerServiceProvider(new ComponentDispatcherFactory('\\ITC\\Component\\Iotapis'));
+		$container->registerServiceProvider(new CategoryFactory('\\ITC\\Component\\Iot'));
+		$container->registerServiceProvider(new MVCFactory('\\ITC\\Component\\Iot'));
+		$container->registerServiceProvider(new ComponentDispatcherFactory('\\ITC\\Component\\Iot'));
 
 		$container->set(
 			ComponentInterface::class,
 			function (Container $container)
 			{
-				$component = new IotapisComponent($container->get(ComponentDispatcherFactoryInterface::class));
+				$component = new IotComponent($container->get(ComponentDispatcherFactoryInterface::class));
 
 				$component->setRegistry($container->get(Registry::class));
 				$component->setMVCFactory($container->get(MVCFactoryInterface::class));

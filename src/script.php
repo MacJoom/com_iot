@@ -1,9 +1,9 @@
 <?php
 declare(strict_types=1);
 /**
- * Iotapi
+ * Device
  *
- * @package    Iotapi
+ * @package    Device
  *
  * @author     Martin KOPP "MacJoom" <martin.kopp@infotech.ch>
  * @copyright  Copyright(c) 2009 - 2021 Martin KOPP "MacJoom". All rights reserved
@@ -17,11 +17,11 @@ use Joomla\CMS\Language\Text;
 use Joomla\CMS\Log\Log;
 
 /**
- * Script file of Iotapi Component
+ * Script file of Device Component
  *
  * @since  0.1.0
  */
-class Com_IotapisInstallerScript
+class Com_IotInstallerScript
 {
 	/**
 	 * Minimum Joomla version to check
@@ -50,7 +50,7 @@ class Com_IotapisInstallerScript
 	 */
 	public function install($parent): bool
 	{
-		echo Text::_('COM_IOTAPIS_INSTALLERSCRIPT_INSTALL');
+		echo Text::_('COM_IOT_INSTALLERSCRIPT_INSTALL');
 
 		return true;
 	}
@@ -66,7 +66,7 @@ class Com_IotapisInstallerScript
 	 */
 	public function uninstall($parent): bool
 	{
-		echo Text::_('COM_IOTAPIS_INSTALLERSCRIPT_UNINSTALL');
+		echo Text::_('COM_IOT_INSTALLERSCRIPT_UNINSTALL');
 
 		return true;
 	}
@@ -83,7 +83,7 @@ class Com_IotapisInstallerScript
 	 */
 	public function update($parent): bool
 	{
-		echo Text::_('COM_IOTAPIS_INSTALLERSCRIPT_UPDATE');
+		echo Text::_('COM_IOT_INSTALLERSCRIPT_UPDATE');
 
 		return true;
 	}
@@ -129,7 +129,7 @@ class Com_IotapisInstallerScript
 			}
 		}
 
-		echo Text::_('COM_IOTAPIS_INSTALLERSCRIPT_PREFLIGHT');
+		echo Text::_('COM_IOT_INSTALLERSCRIPT_PREFLIGHT');
 
 		return true;
 	}
@@ -147,7 +147,7 @@ class Com_IotapisInstallerScript
 	 */
 	public function postflight($type, $parent)
 	{
-		echo Text::_('COM_IOTAPIS_INSTALLERSCRIPT_POSTFLIGHT');
+		echo Text::_('COM_IOT_INSTALLERSCRIPT_POSTFLIGHT');
 
 		return true;
 	}

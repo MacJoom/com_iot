@@ -1,9 +1,9 @@
 <?php
 declare(strict_types=1);
 /**
- * Iotapi
+ * Device
  *
- * @package    Iotapi
+ * @package    Device
  *
  * @author     Martin KOPP "MacJoom" <martin.kopp@infotech.ch>
  * @copyright  Copyright(c) 2009 - 2021 Martin KOPP "MacJoom". All rights reserved
@@ -11,7 +11,7 @@ declare(strict_types=1);
  * @link       https://infotech.ch
  */
 
-namespace ITC\Component\Iotapis\Site\Helper;
+namespace ITC\Component\Iot\Site\Helper;
 
 defined('_JEXEC') or die;
 
@@ -19,30 +19,30 @@ use Joomla\CMS\Categories\CategoryNode;
 use Joomla\CMS\Language\Multilanguage;
 
 /**
- * Iotapis Component Route Helper
+ * Iot Component Route Helper
  *
  * @static
  * @package     Joomla.Site
- * @subpackage  com_iotapis
+ * @subpackage  com_iot
  * @since       1.5
  */
 abstract class Route
 {
 	/**
-	 * Get the URL route for a iotapis from a iotapi ID, iotapis category ID and language
+	 * Get the URL route for a devicedatalist from a device ID, devicedatalist category ID and language
 	 *
-	 * @param   integer  $id        The id of the iotapis
-	 * @param   integer  $catid     The id of the iotapis's category
+	 * @param   integer  $id        The id of the devicedatalist
+	 * @param   integer  $catid     The id of the devicedatalist's category
 	 * @param   mixed    $language  The id of the language being used.
 	 *
-	 * @return  string  The link to the iotapis
+	 * @return  string  The link to the devicedatalist
 	 *
 	 * @since   1.5
 	 */
-	public static function getIotapisRoute($id, $catid, $language = 0)
+	public static function getIotRoute($id, $catid, $language = 0)
 	{
 		// Create the link
-		$link = 'index.php?option=com_iotapis&view=iotapi&id=' . $id;
+		$link = 'index.php?option=com_iot&view=device&id=' . $id;
 
 		if ($catid > 1)
 		{
@@ -58,12 +58,12 @@ abstract class Route
 	}
 
 	/**
-	 * Get the URL route for a iotapis category from a iotapis category ID and language
+	 * Get the URL route for a devicedatalist category from a devicedatalist category ID and language
 	 *
-	 * @param   mixed  $catid     The id of the iotapis's category either an integer id or an instance of CategoryNode
+	 * @param   mixed  $catid     The id of the devicedatalist's category either an integer id or an instance of CategoryNode
 	 * @param   mixed  $language  The id of the language being used.
 	 *
-	 * @return  string  The link to the iotapis
+	 * @return  string  The link to the devicedatalist
 	 *
 	 * @since   1.5
 	 */
@@ -85,7 +85,7 @@ abstract class Route
 		else
 		{
 			// Create the link
-			$link = 'index.php?option=com_iotapis&view=category&id=' . $id;
+			$link = 'index.php?option=com_iot&view=category&id=' . $id;
 
 			if ($language && $language !== '*' && Multilanguage::isEnabled())
 			{

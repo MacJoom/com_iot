@@ -1,26 +1,26 @@
 <?php
 declare(strict_types=1);
 /**
- * Iotapi
+ * Device
  *
- * @package    Iotapi
+ * @package    Device
  *
  * @author     Martin KOPP "MacJoom" <martin.kopp@infotech.ch>
  * @copyright  Copyright(c) 2009 - 2021 Martin KOPP "MacJoom". All rights reserved
  * @license    GNU General Public License version 2 or later; see LICENSE.txt
  * @link       https://infotech.ch
  */
-namespace ITC\Component\Iotapis\Site\Helper;
+namespace ITC\Component\Iot\Site\Helper;
 
 defined('_JEXEC') or die;
 
 use Joomla\CMS\Factory;
 use Joomla\CMS\Language\Associations;
 use Joomla\Component\Categories\Administrator\Helper\CategoryAssociationHelper;
-use ITC\Component\Iotapis\Site\Helper\Route as IotapisHelperRoute;
+use ITC\Component\Iot\Site\Helper\Route as IotHelperRoute;
 
 /**
- * Iotapis Component Association Helper
+ * Iot Component Association Helper
  *
  * @since  3.0
  */
@@ -42,17 +42,17 @@ abstract class AssociationHelper extends CategoryAssociationHelper
 		$view = $view ?? $jinput->get('view');
 		$id = empty($id) ? $jinput->getInt('id') : $id;
 
-		if ($view === 'iotapis')
+		if ($view === 'devicedatalist')
 		{
 			if ($id)
 			{
-				$associations = Associations::getAssociations('com_iotapis', '#__iotapis_details', 'com_iotapis.item', $id);
+				$associations = Associations::getAssociations('com_iot', '#__iot_details', 'com_iot.item', $id);
 
 				$return = array();
 
 				foreach ($associations as $tag => $item)
 				{
-					$return[$tag] = IotapisHelperRoute::getIotapisRoute($item->id, (int) $item->catid, $item->language);
+					$return[$tag] = IotHelperRoute::getIotRoute($item->id, (int) $item->catid, $item->language);
 				}
 
 				return $return;
@@ -61,7 +61,7 @@ abstract class AssociationHelper extends CategoryAssociationHelper
 
 		if ($view === 'category' || $view === 'categories')
 		{
-			return self::getCategoryAssociations($id, 'com_iotapis');
+			return self::getCategoryAssociations($id, 'com_iot');
 		}
 
 		return array();

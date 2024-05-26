@@ -1,9 +1,9 @@
 <?php
 declare(strict_types=1);
 /**
- * Iotapi
+ * LetterRule
  *
- * @package    Iotapi
+ * @package    Iot
  *
  * @author     Martin KOPP "MacJoom" <martin.kopp@infotech.ch>
  * @copyright  Copyright(c) 2009 - 2021 Martin KOPP "MacJoom". All rights reserved
@@ -11,7 +11,7 @@ declare(strict_types=1);
  * @link       https://infotech.ch
  */
 
-namespace ITC\Component\Iotapis\Administrator\Rule;
+namespace ITC\Component\Iot\Administrator\Rule;
 
 defined('JPATH_PLATFORM') or die;
 

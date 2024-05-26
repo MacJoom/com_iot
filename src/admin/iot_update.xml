@@ -1,0 +1,17 @@
+<updates>
+    <update>
+        <name>Iot</name>
+        <description>This is com_iot Martin KOPP "MacJoom"</description>
+        <element>com_iot</element>
+        <type>component</type>
+        <version>Martin KOPP "MacJoom"</version>
+        <downloads>
+            <downloadurl type="full" format="zip">https://www.example.com/com_iot_Martin KOPP "MacJoom".zip</downloadurl>
+        </downloads>
+        <maintainer>Iot Creator</maintainer>
+        <maintainerurl>https://infotech.ch</maintainerurl>
+        <targetplatform name="joomla" version="4.0"/>
+        <client>site</client>
+		<php_minimum>7.2.5</php_minimum>
+    </update>
+</updates>

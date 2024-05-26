@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/com_iotapi.iml" filepath="$PROJECT_DIR$/.idea/com_iotapi.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/com_iot.iml" filepath="$PROJECT_DIR$/.idea/com_iot.iml" />
     </modules>
   </component>
 </project>

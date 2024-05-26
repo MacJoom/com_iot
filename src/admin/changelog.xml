@@ -1,6 +1,6 @@
 <changelogs>
 	<changelog>
-		<element>com_iotapis</element>
+		<element>com_iot</element>
 		<type>component</type>
 		<version>Martin KOPP "MacJoom"</version>
 		<note>
@@ -8,7 +8,7 @@
 		</note>
 	</changelog>
 	<changelog>
-		<element>com_iotapis</element>
+		<element>com_iot</element>
 		<type>component</type>
 		<version>Martin KOPP "MacJoom"</version>
 		<note>

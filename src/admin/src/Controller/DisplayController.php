@@ -1,9 +1,9 @@
 <?php
 declare(strict_types=1);
 /**
- * Iotapi
+ * DisplayController
  *
- * @package    Iotapi
+ * @package    Iot
  *
  * @author     Martin KOPP "MacJoom" <martin.kopp@infotech.ch>
  * @copyright  Copyright(c) 2009 - 2021 Martin KOPP "MacJoom". All rights reserved
@@ -11,14 +11,14 @@ declare(strict_types=1);
  * @link       https://infotech.ch
  */
 
-namespace ITC\Component\Iotapis\Administrator\Controller;
+namespace ITC\Component\Iot\Administrator\Controller;
 
 defined('_JEXEC') or die;
 
 use Joomla\CMS\MVC\Controller\BaseController;
 
 /**
- * Iotapis master display controller.
+ * Iot master display controller.
  *
  * @since  0.1.0
  */
@@ -30,7 +30,7 @@ class DisplayController extends BaseController
 	 * @var    string
 	 * @since  0.1.0
 	 */
-	protected $default_view = 'iotapis';
+	protected $default_view = 'devices';
 
 	/**
 	 * Method to display a view.

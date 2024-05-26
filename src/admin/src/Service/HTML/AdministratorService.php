@@ -1,9 +1,9 @@
 <?php
 declare(strict_types=1);
 /**
- * Iotapi
+ * AdministratorService
  *
- * @package    Iotapi
+ * @package    Iot
  *
  * @author     Martin KOPP "MacJoom" <martin.kopp@infotech.ch>
  * @copyright  Copyright(c) 2009 - 2021 Martin KOPP "MacJoom". All rights reserved
@@ -11,7 +11,7 @@ declare(strict_types=1);
  * @link       https://infotech.ch
  */
 
-namespace ITC\Component\Iotapis\Administrator\Service\HTML;
+namespace ITC\Component\Iot\Administrator\Service\HTML;
 
 defined('JPATH_BASE') or die;
 
@@ -22,7 +22,7 @@ use Joomla\CMS\Layout\LayoutHelper;
 use Joomla\CMS\Router\Route;
 
 /**
- * Iotapi HTML class.
+ * Iot HTML class.
  *
  * @since  0.1.0
  */
@@ -31,35 +31,35 @@ class AdministratorService
 	/**
 	 * Get the associated language flags
 	 *
-	 * @param   integer  $iotapiid  The item id to search associations
+	 * @param   integer  $deviceid  The item id to search associations
 	 *
 	 * @return  string  The language HTML
 	 *
 	 * @throws  Exception
 	 */
-	public function association($iotapiid)
+	public function association($deviceid)
 	{
 		// Defaults
 		$html = '';
 
 		// Get the associations
-		if ($associations = Associations::getAssociations('com_iotapis', '#__iotapis_details', 'com_iotapis.item', $iotapiid, 'id', null))
+		if ($associations = Associations::getAssociations('com_iot', '#__iot_details', 'com_iot.item', $deviceid, 'id', null))
 		{
 			foreach ($associations as $tag => $associated)
 			{
 				$associations[$tag] = (int) $associated->id;
 			}
 
-			// Get the associated iotapi items
+			// Get the associated device items
 			$db = Factory::getDbo();
 			$query = $db->getQuery(true)
 				->select('c.id, c.name as title')
 				->select('l.sef as lang_sef, lang_code')
-				->from('#__iotapis_details as c')
+				->from('#__iot_details as c')
 				->select('cat.title as category_title')
 				->join('LEFT', '#__categories as cat ON cat.id=c.catid')
 				->where('c.id IN (' . implode(',', array_values($associations)) . ')')
-				->where('c.id != ' . $iotapiid)
+				->where('c.id != ' . $deviceid)
 				->join('LEFT', '#__languages as l ON c.language=l.lang_code')
 				->select('l.image')
 				->select('l.title as language_title');
