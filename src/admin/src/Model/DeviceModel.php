@@ -193,7 +193,7 @@ class DeviceModel extends AdminModel
         $query = $db->getQuery(true)
             ->select('*')
             ->from($db->quoteName($tablename));
-        $fields = array_keys($this->getProperties());
+        $fields = array_keys($this->getProperties(false));
 
         // Check that $field is in the table.
         if (!\in_array($field, $fields)) {

@@ -102,11 +102,7 @@ if ($saveOrder && !empty($this->items))
 								</td>
                                 <td class="d-none d-md-table-cell">
 									<?php
-                                        $data = str_replace( "\n", '', $item->iotdata);
-                                        $data = str_replace( '"memory":', '"memory":"', $data);
-									    $data = str_replace( '}','"}', $data);
-
-									    $data = json_decode($data, true);
+									    $data = json_decode($item->iotdata, true);
 
                                         if (is_array($data)) {
                                             foreach ($data as $key => $value)
