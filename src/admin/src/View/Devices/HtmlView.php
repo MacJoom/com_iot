@@ -111,7 +111,7 @@ class HtmlView extends BaseHtmlView
 		// We don't need toolbar in the modal window.
 		if ($this->getLayout() !== 'modal')
 		{
-			IotHelper::addSubmenu('devicedatalist');
+			IotHelper::addSubmenu('devices');
 			$this->addToolbar();
 			//$this->sidebar = \JHtmlSidebar::render();
 		}
@@ -171,20 +171,20 @@ class HtmlView extends BaseHtmlView
 
 			$childBar = $dropdown->getChildToolbar();
 
-			$childBar->publish('devicedatalist.publish')->listCheck(true);
+			$childBar->publish('devices.publish')->listCheck(true);
 
-			$childBar->unpublish('devicedatalist.unpublish')->listCheck(true);
+			$childBar->unpublish('devices.unpublish')->listCheck(true);
 
-			$childBar->archive('devicedatalist.archive')->listCheck(true);
+			$childBar->archive('devices.archive')->listCheck(true);
 
 			if ($user->authorise('core.admin'))
 			{
-				$childBar->checkin('devicedatalist.checkin')->listCheck(true);
+				$childBar->checkin('devices.checkin')->listCheck(true);
 			}
 
 			if ($this->state->get('filter.published') != -2)
 			{
-				$childBar->trash('devicedatalist.trash')->listCheck(true);
+				$childBar->trash('devices.trash')->listCheck(true);
 			}
 		}
 
@@ -195,7 +195,7 @@ class HtmlView extends BaseHtmlView
 
 		if ($this->state->get('filter.published') == -2 && $canDo->get('core.delete'))
 		{
-			$toolbar->delete('devicedatalist.delete')
+			$toolbar->delete('devices.delete')
 				->text('JTOOLBAR_EMPTY_TRASH')
 				->message('JGLOBAL_CONFIRM_DELETE')
 				->listCheck(true);

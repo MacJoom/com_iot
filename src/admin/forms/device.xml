@@ -19,6 +19,8 @@
 			label="COM_IOT_FIELD_NAME_LABEL"
 			size="40"
 			required="true"
+			class="readonly"
+			readonly="true"
 		 />
 
 		<field

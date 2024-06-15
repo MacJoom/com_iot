@@ -15,8 +15,11 @@ namespace ITC\Component\Iot\Administrator\Controller;
 
 defined('_JEXEC') or die;
 
+use Joomla\CMS\Application\CMSApplication;
 use Joomla\CMS\MVC\Controller\FormController;
+use Joomla\CMS\MVC\Factory\MVCFactoryInterface;
 use Joomla\CMS\Router\Route;
+use Joomla\Input\Input;
 
 /**
  * Controller for a single device

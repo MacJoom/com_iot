@@ -169,7 +169,7 @@ class AssociationsHelper extends AssociationExtensionHelper
 			{
 				case 'device':
 					$fields['title'] = 'a.name';
-					$fields['state'] = 'a.published';
+					$fields['state'] = 'a.state'; //changed from a.published
 
 					$support['state'] = true;
 					$support['acl'] = true;

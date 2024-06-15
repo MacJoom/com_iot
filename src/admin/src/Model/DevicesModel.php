@@ -47,7 +47,7 @@ class DevicesModel extends ListModel
 				'catid', 'a.catid', 'category_id', 'category_title',
 				'checked_out', 'a.checked_out',
 				'checked_out_time', 'a.checked_out_time',
-				'published', 'a.published',
+				'published', 'a.state',
 				'access', 'a.access', 'access_level',
 				'ordering', 'a.ordering',
 				'language', 'a.language', 'language_title',
@@ -159,11 +159,11 @@ class DevicesModel extends ListModel
 
 		if (is_numeric($published))
 		{
-			$query->where($db->quoteName('a.published') . ' = ' . (int) $published);
+			$query->where($db->quoteName('a.state') . ' = ' . (int) $published);
 		}
 		elseif ($published === '')
 		{
-			$query->where('(' . $db->quoteName('a.published') . ' = 0 OR ' . $db->quoteName('a.published') . ' = 1)');
+			$query->where('(' . $db->quoteName('a.state') . ' = 0 OR ' . $db->quoteName('a.state') . ' = 1)');
 		}
 
 		// Filter by a single or group of categories.

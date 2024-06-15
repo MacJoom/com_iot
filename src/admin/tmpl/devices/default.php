@@ -12,6 +12,7 @@ declare(strict_types=1);
  */
 defined('_JEXEC') or die;
 
+use Joomla\CMS\Button\PublishedButton;
 use Joomla\CMS\HTML\HTMLHelper;
 use Joomla\CMS\Language\Associations;
 use Joomla\CMS\Language\Multilanguage;
@@ -19,6 +20,10 @@ use Joomla\CMS\Language\Text;
 use Joomla\CMS\Layout\LayoutHelper;
 use Joomla\CMS\Router\Route;
 use Joomla\CMS\Session\Session;
+
+$wa = $this->document->getWebAssetManager();
+$wa->useScript('table.columns')
+	->useScript('multiselect');
 
 $canChange  = true;
 $assoc = Associations::isEnabled();
@@ -93,7 +98,7 @@ if ($saveOrder && !empty($this->items))
 								</td>
 								<th scope="row" class="has-context">
 									<?php if ($item->checked_out) : ?>
-										<?php echo HTMLHelper::_('jgrid.checkedout', $i, $item->editor, $item->checked_out_time, 'devicedatalist.', true); ?>
+										<?php echo HTMLHelper::_('jgrid.checkedout', $i, $item->editor, $item->checked_out_time, 'devices.', true); ?>
 									<?php endif; ?>
 									<?php $editIcon = '<span class="fa fa-pencil-square mr-2" aria-hidden="true"></span>'; ?>
                                     <div>
@@ -101,7 +106,7 @@ if ($saveOrder && !empty($this->items))
 		                                    <?php echo $editIcon; ?><?php echo $this->escape($item->name); ?></a>
                                     </div>
                                     <div>
-                                        <a class="" href="<?php echo Route::_('index.php?option=com_iot&view=devicedatalist&filter[name]=' . $item->name); ?>" title="<?php echo Text::_('JACTION_EDIT'); ?> <?php echo $this->escape(addslashes($item->name)); ?>">
+                                        <a class="" href="<?php echo Route::_('index.php?option=com_iot&view=devices&filter[name]=' . $item->name); ?>" title="<?php echo Text::_('JACTION_EDIT'); ?> <?php echo $this->escape(addslashes($item->name)); ?>">
 		                                    <?php echo Text::_('COM_IOT_FIELD_IOTDATA_LABEL');?></a>
                                     </div>
                                     <div class="small">
@@ -128,8 +133,18 @@ if ($saveOrder && !empty($this->items))
 								<?php endif; ?>
 								<td class="text-center">
 									<div class="btn-group">
-										<?php echo HTMLHelper::_('jgrid.published', $item->published, $i, 'devicedatalist.', $canChange, 'cb', $item->publish_up, $item->publish_down); ?>
-									</div>
+										<?php //echo HTMLHelper::_('jgrid.published', $item->published, $i, 'devicedatalist.', $canChange, 'cb', $item->publish_up, $item->publish_down); ?>
+										<?php
+										$options = [
+											'task_prefix' => 'articles.',
+											'disabled' => $workflow_state || !$canChange,
+											'id' => 'state-' . $item->id,
+											'category_published' => $item->category_published
+										];
+
+										echo (new PublishedButton())->render((int) $item->state, $i, $options, $item->publish_up, $item->publish_down);
+										?>
+                                    </div>
 								</td>
 								<td class="d-none d-md-table-cell">
 									<?php echo $item->id; ?>
