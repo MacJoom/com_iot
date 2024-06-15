@@ -1,8 +1,8 @@
 <?php
 /**
- * Web Services - Iotapi
+ * Web Services - Iot
  *
- * @package    Iotapi
+ * @package    Iot
  *
  * @author     Martin KOPP "MacJoom" <martin.kopp@infotech.ch>
  * @copyright  Copyright(c) 2009 - 2021 Martin KOPP "MacJoom". All rights reserved
@@ -17,7 +17,7 @@ use Joomla\CMS\Router\ApiRouter;
 use Joomla\Router\Route;
 
 /**
- * Web Services adapter for com_iotapis.
+ * Web Services adapter for com_iot.
  *
  * @since  4.0.0
  */
@@ -32,7 +32,7 @@ class PlgWebservicesIot extends CMSPlugin
 	protected $autoloadLanguage = true;
 
 	/**
-	 * Registers com_iotapis's API's routes in the application
+	 * Registers com_iot's API's routes in the application
 	 *
 	 * @param   ApiRouter  &$router  The API Routing object
 	 *
@@ -108,15 +108,15 @@ class PlgWebservicesIot extends CMSPlugin
 	{
 		$defaults    = [
 			'component'  => 'com_contenthistory',
-			'type_alias' => 'com_iotapis.iotapi',
+			'type_alias' => 'com_iot.iotapi',
 			'type_id'    => 1,
 		];
 		$getDefaults = array_merge(['public' => false], $defaults);
 
 		$routes = [
-			new Route(['GET'], 'v1/iotapis/devices/:id/contenthistory', 'history.displayList', ['id' => '(\d+)'], $getDefaults),
-			new Route(['PATCH'], 'v1/iotapis/devices/:id/contenthistory/keep', 'history.keep', ['id' => '(\d+)'], $defaults),
-			new Route(['DELETE'], 'v1/iotapis/devices/:id/contenthistory', 'history.delete', ['id' => '(\d+)'], $defaults),
+			new Route(['GET'], 'v1/iot/devices/:id/contenthistory', 'history.displayList', ['id' => '(\d+)'], $getDefaults),
+			new Route(['PATCH'], 'v1/iot/devices/:id/contenthistory/keep', 'history.keep', ['id' => '(\d+)'], $defaults),
+			new Route(['DELETE'], 'v1/iot/devices/:id/contenthistory', 'history.delete', ['id' => '(\d+)'], $defaults),
 		];
 
 		$router->addRoutes($routes);
