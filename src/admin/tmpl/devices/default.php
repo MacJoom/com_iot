@@ -106,7 +106,7 @@ if ($saveOrder && !empty($this->items))
 		                                    <?php echo $editIcon; ?><?php echo $this->escape($item->name); ?></a>
                                     </div>
                                     <div>
-                                        <a class="" href="<?php echo Route::_('index.php?option=com_iot&view=devices&filter[name]=' . $item->name); ?>" title="<?php echo Text::_('JACTION_EDIT'); ?> <?php echo $this->escape(addslashes($item->name)); ?>">
+                                        <a class="" href="<?php echo Route::_('index.php?option=com_iot&view=devicedatalist&filter[name]=' . $item->name); ?>" title="<?php echo Text::_('JACTION_EDIT'); ?> <?php echo $this->escape(addslashes($item->name)); ?>">
 		                                    <?php echo Text::_('COM_IOT_FIELD_IOTDATA_LABEL');?></a>
                                     </div>
                                     <div class="small">
